@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>account_book</title>
+</head>
+<body>
+  <form action="/create" method="post">
+    <label for="title">商品名</label> 
+    <input type="text" name="title" id="title">
+    <label for="price">金額</label>
+    <input type="text" name="price" id="price">
+    <select name="category" id="category">
+      <% @categories.each do |category| %>
+        <option value="<%=category.id%>"><%=category.name%></option>
+      <% end %>
+    </select>
+    <input type="submit" value="追加">
+  </form>
+
+  <ul>
+    <% @categories.each do |category| %>
+      <li><a href="/category/<%= category.id %>"><%= category.name %></a></li>
+    <% end %>
+  </ul>
+  
+  <div>
+    <% @items.each do |item| %>
+      <div>
+        <p><%= item.title %></p>
+        <p><%= item.price %>円</p>
+        <p><%= item.category.name %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <p>合計: <%= @total %>円</p>
+  </div>
+</body>
+</html>
