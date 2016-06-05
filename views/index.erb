@@ -30,12 +30,26 @@
         <p><%= item.title %></p>
         <p><%= item.price %>円</p>
         <p><%= item.category.name %></p>
+        <span>
+          <form action="/delete/<%= item.id %>" method="post">
+            <input type="submit" value="削除">
+          </form>
+        </span>
+        <span>
+        <!-- getにしても動いた件
+          <form action="/edit/<%= item.id %>" method="get">
+          -->
+          <form action="/edit/<%= item.id %>" method="post">
+            <input type="submit" value="編集">
+          </form>
+        </span>
       </div>
     <% end %>
   </div>
 
   <div>
     <p>合計: <%= @total %>円</p>
+    <a href="/">TOPページヘ</a>
   </div>
 </body>
 </html>
